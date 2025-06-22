@@ -25,3 +25,8 @@ def extract(queue):
     else:
         return queue.pop(0)
     
+def peek(queue):
+    if len(queue) == 0:
+        return None
+    else:
+        return queue[0]
