@@ -30,3 +30,6 @@ def peek(queue):
         return None
     else:
         return queue[0]
+
+def is_empty(queue):
+    return len(queue) == 0
