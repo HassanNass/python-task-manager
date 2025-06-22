@@ -19,6 +19,10 @@ for i in range(num_of_tasks):
     
     insert(queue, task)
     
+print("\nThe tasks that added to the queue:")
+for task in queue:
+    print(task)
+    
 def extract(queue):
     if len(queue) == 0:
         return None
@@ -33,3 +37,31 @@ def peek(queue):
 
 def is_empty(queue):
     return len(queue) == 0
+
+print("\nPeek:", peek(queue))
+print("Is queue empty?", is_empty(queue))
+
+task = extract(queue)
+print("Extracted task:", task)
+print("Queue after extract:", queue)
+
+def complete_next_task(queue):
+    if len(queue) == 0:
+        print("There isn't any tasks.")
+        return
+    else:
+        index = 0
+        p = queue[0]["priority"]
+        for i in range(len(queue)):
+            if queue[i]["priority"] < p:
+                p = queue[i]["priority"]
+                index = i
+
+        task = queue.pop(index)
+        print("\nThe Highest Priority Task:")
+        print(f"Title   : {task['title']}")
+        print(f"Duration: {task['duration']}")
+        print(f"Priority: {task['priority']}")
+
+complete_next_task(queue)
+
