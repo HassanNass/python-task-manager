@@ -19,3 +19,9 @@ for i in range(num_of_tasks):
     
     insert(queue, task)
     
+def extract(queue):
+    if len(queue) == 0:
+        return None
+    else:
+        return queue.pop(0)
+    
