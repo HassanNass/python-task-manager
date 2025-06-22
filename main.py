@@ -65,3 +65,12 @@ def complete_next_task(queue):
 
 complete_next_task(queue)
 
+def sort_by_title(queue):
+    n = len(queue)
+    for i in range(n - 1):
+        min_i = i
+        for j in range(i + 1, n):
+            if queue[j]["title"].lower() < queue[min_i]["title"].lower():
+                min_i = j
+        queue[i], queue[min_i] = queue[min_i], queue[i]
+        
