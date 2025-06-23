@@ -77,4 +77,29 @@ def sort_by_title(queue):
     return sorted_queue
 
 
+def search_for_task(queue, title):
+    sorted_queue = sort_by_title(queue)
+    
+    start = 0
+    end = len(sorted_queue) - 1
+    
+    while start <= end:
+        mid = (start + end) // 2
+        mid_title = sorted_queue[mid]["title"].lower()
         
+        if mid_title == title.lower():
+            return sorted_queue[mid]
+        elif mid_title < title.lower():
+            start = mid + 1
+        else:
+            end = mid - 1
+    return None
+
+title_search = input("Enter the title of the task you want to search for: ")
+search = search_for_task(queue, title_search)
+
+if search:
+    print(f"Task found: {search}")
+else:
+    print("Task not found.")
+    
