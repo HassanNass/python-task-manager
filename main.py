@@ -103,3 +103,19 @@ if search:
 else:
     print("Task not found.")
     
+def sort_tasks(queue):
+    sort_queue = queue[:]
+    n = len(sort_queue)
+    
+    for i in range(n - 1):
+        min_i = i
+        for j in range(i + 1, n):
+            if sort_queue[j]["duration"] < sort_queue[min_i]["duration"]:
+                min_i = j
+        sort_queue[i], sort_queue[min_i] = sort_queue[min_i], sort_queue[i]
+    return sort_queue
+
+sort_by_duration = sort_tasks(queue)
+print("\nTasks sorted by duration: ")
+for task in sort_by_duration:
+    print(f"{task}")
